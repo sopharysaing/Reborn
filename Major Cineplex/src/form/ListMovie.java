@@ -214,6 +214,7 @@ public class ListMovie extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateNewActionPerformed
 
     private void btnCreateMovie1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateMovie1ActionPerformed
+            
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCreateMovie1ActionPerformed
 

@@ -424,8 +424,8 @@ public class CreateMovieConfirm extends javax.swing.JDialog {
         languageLabel.setText(CreateMovie.language);
         subtitleLabel.setText(CreateMovie.subtitle);
         txtDescription.setText(CreateMovie.description);
-        txttest.setText(String.valueOf(CreateMovie.id));
-        txttest.setVisible(Boolean.FALSE);
+        txttest.setText(String.valueOf(CreateMovie.moiveid));
+        txttest.setVisible(Boolean.TRUE);
     }//GEN-LAST:event_formWindowOpened
 
     private void txtDescriptionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescriptionFocusGained
@@ -501,28 +501,19 @@ public class CreateMovieConfirm extends javax.swing.JDialog {
             String source = sourceLabel.getText().trim();
             String description = txtDescription.getText().trim();
             String genre = txtGenre.getText().trim();
-            int MovieID = CreateMovie.id;
+            int MovieID = CreateMovie.moiveid;
             int MTID = CreateMovie.motyid;
             int Mstatus= CreateMovie.mstat; //<< language ID
             int status = CreateMovie.statid;
             
             
 
-    //String query = "INSERT INTO tblmovie (MovieID,MovieTitle,Runningtime,YearReleased,Director,Actor,Source,Description,khmerSubtitle," +
-     //               "englishSubtitle,moviePoster,MovieTypeID,Genre,LanguageID,StatusID) "
-     //               + "VALUES ('"+MovieID+"','"+movieTitle+"','"+runningTime+"','"+yearReleased+"'"
-       //             + ",'"+director+"','"+actor+"','"+source+"','"+description+"','"+CreateMovie.khmerSubtitlePath+"','"+CreateMovie.englishSubtitlePath+"'"
-         ///           + ",'"+CreateMovie.moviePosterPath+"','"+MTID+"','"+genre+"','"+Mstatus+"','"+status+"');     ";
-            
-            //    Statement statement = Data.getDataConnection().createStatement();
-              //  statement.executeQuery(query);                                                
-                                        
-                //statement.close();                        
+                    
 
             
         
     String query = " insert into tblmovie (MovieID,MovieTitle,Runningtime,YearReleased,Director,Actor,Source,Description,khmerSubtitle,englishSubtitle,moviePoster,MovieTypeID,Genre,LanguageID,StatusID)"
-        + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,)";
+        + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
       // create the mysql insert preparedstatement
             PreparedStatement ppst = Data.getDataConnection().prepareStatement(query);
@@ -547,7 +538,7 @@ public class CreateMovieConfirm extends javax.swing.JDialog {
             
 
             
-            
+      ppst.close();
             
             
 

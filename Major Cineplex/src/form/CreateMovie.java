@@ -18,7 +18,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -92,7 +91,6 @@ public class CreateMovie extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtRunningTime = new textfieldformajorcineplex.TextFieldForMajorCineplex();
         txtYearReleased = new textfieldformajorcineplex.TextFieldForMajorCineplex();
-        txtID = new javax.swing.JTextField();
 
         jTextField1.setText("jTextField1");
 
@@ -266,14 +264,15 @@ public class CreateMovie extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chb2D)
                 .addGap(36, 36, 36)
                 .addComponent(chb3D)
                 .addGap(36, 36, 36)
                 .addComponent(chb4DX)
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -656,31 +655,7 @@ public class CreateMovie extends javax.swing.JFrame {
             }
         });
 
-        txtID.setEditable(false);
-        txtID.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
-        txtID.setForeground(new java.awt.Color(153, 153, 153));
-        txtID.setText("ID");
-        txtID.setCaretColor(new java.awt.Color(51, 51, 51));
-        txtID.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        txtID.setPreferredSize(new java.awt.Dimension(200, 45));
-        txtID.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtIDFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtIDFocusLost(evt);
-            }
-        });
-        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtIDKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtIDKeyTyped(evt);
-            }
-        });
-
-        try{String quary    =   "SELECT STATUS FROM tblmoviestatus";
+        try{String quary    =   "SELECT StatusName FROM dbmajorcineplex.tblmoviestatus ORDER BY StatusID ASC LIMIT 2;";
             Statement statement = Data.getDataConnection().createStatement();
             ResultSet rs =  statement.executeQuery(quary);
 
@@ -716,23 +691,20 @@ public class CreateMovie extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(cbSelectStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtDirector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(txtActor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtSource, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
         );
@@ -758,8 +730,7 @@ public class CreateMovie extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbMoviePoster, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cbSelectStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cbSelectStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -786,7 +757,7 @@ public class CreateMovie extends javax.swing.JFrame {
     public static boolean created = false;
     
     public static String moviePosterPath = "";
-    public static int s = 0;
+    public static int moiveid;
     public static byte [] movieImageByte= null;
     public static String movieTitle = "";
     public static String runningTime = "";
@@ -804,8 +775,22 @@ public class CreateMovie extends javax.swing.JFrame {
     public static String subtitle = "None";
     public static String description = "";
     
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Form Logo.png")));
+        try {
+            String que = "SELECT MovieID FROM tblmovie ORDER BY MovieID DESC LIMIT 1;";
+            Statement st = Data.getDataConnection().createStatement();
+            ResultSet rs = st.executeQuery(que);
+            
+            while (rs.next())
+            {
+            moiveid = rs.getInt(1);
+            moiveid ++;
+            
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void txtMovieTitleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMovieTitleFocusGained
@@ -967,7 +952,8 @@ public class CreateMovie extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnInsertPosterActionPerformed
     public static int motyid;
-    public static int mstat;
+    public static int mstat; //<< language ID
+    public static int statid;
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         try {
 
@@ -1099,11 +1085,12 @@ public class CreateMovie extends javax.swing.JFrame {
                                                                     else
                                                                         subtitle = subtitle + " , Khmer";
                                                             description = txtDescription.getText().trim();
-
-
-        //cbSelectStatus.setSelectedItem("   Status");
-        
-
+                                                                
+                                                                //statusID
+                                                                if (cbSelectStatus.getSelectedItem().equals("   Coming Soon"))
+                                                                    statid = 1;
+                                                                else
+                                                                    statid = 2;
                                                             
                                                             CreateMovieConfirm.main(null);
                                                         } else
@@ -1321,66 +1308,14 @@ public class CreateMovie extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_chbSubEnglishActionPerformed
-        public static int id ;
+        
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         if (created){
             btnClearActionPerformed(null);
             movieType = "";
         }
         created = false;
-        
-        try{        String quary    =   "Select tblmovie.movieID from tblmovie";
-                Statement statement = Data.getDataConnection().createStatement();
-                ResultSet rs =  statement.executeQuery(quary);
-        while (rs.next())
-        {
-        id = rs.getInt("MovieID");
-        
-        
-        statement.close();
-        rs.close();
-  
-        }
-        if (("").equals(id))
-        {
-            
-            id=1;
-            
-            txtID.setText(String.valueOf(id));
-        } else 
-        {
-            id++;
-            
-            txtID.setText(String.valueOf(id));
-        }
-            
-        
-        
-        }   catch (Exception e) {
-            System.err.println("Got an exception! ");
-            System.err.println(e.getMessage());
-            }
-       
-        
-
-        
     }//GEN-LAST:event_formWindowGainedFocus
-
-    private void txtIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIDFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDFocusGained
-
-    private void txtIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIDFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDFocusLost
-
-    private void txtIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDKeyPressed
-
-    private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDKeyTyped
 
     private void txtActorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActorActionPerformed
         // TODO add your handling code here:
@@ -1389,7 +1324,7 @@ public class CreateMovie extends javax.swing.JFrame {
     private void cbSelectStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSelectStatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbSelectStatusActionPerformed
-        public static int statid;
+        
     /**
      * @param args the command line arguments
      */
@@ -1464,7 +1399,6 @@ public class CreateMovie extends javax.swing.JFrame {
     private javax.swing.JTextField txtActor;
     private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtDirector;
-    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtMovieTitle;
     private textfieldformajorcineplex.TextFieldForMajorCineplex txtRunningTime;
     private javax.swing.JTextField txtSource;
