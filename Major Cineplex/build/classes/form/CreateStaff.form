@@ -284,6 +284,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbSelectPositionActionPerformed"/>
       </Events>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="            try{String quary    =   &quot;SELECT positionname FROM dbmajorcineplex.tblposition&quot;;&#xa;                Statement statement = Data.getDataConnection().createStatement();&#xa;                ResultSet rs =  statement.executeQuery(quary); &#xa;                 &#xa;                if (rs.first())&#xa;                do {&#xa;                    cbSelectPosition.addItem(rs.getString(1));&#xa;                    &#xa;                    } while (rs.next());&#xa;                rs.close();&#xa;                statement.close();&#xa;            } catch (Exception e) {&#xa;            }"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>

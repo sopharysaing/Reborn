@@ -143,7 +143,7 @@ public class CreateUser extends javax.swing.JFrame {
 
         cbSelectRole.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         cbSelectRole.setForeground(new java.awt.Color(51, 51, 51));
-        cbSelectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "   Role", "   Admin", "   Ticket Seller", "   Snack Seller", "   Stock Holder" }));
+        cbSelectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "   Role" }));
         cbSelectRole.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbSelectRole.setFocusable(false);
         cbSelectRole.setPreferredSize(new java.awt.Dimension(200, 45));
@@ -214,6 +214,20 @@ public class CreateUser extends javax.swing.JFrame {
                 txtCPasswordKeyTyped(evt);
             }
         });
+
+        try {
+            String query = "SELECT rolename FROM tblrole";
+            Statement st = Data.getDataConnection().createStatement();
+            ResultSet rs = st.executeQuery(query);
+            if (rs.first())
+            do {
+                cbSelectRole.addItem(rs.getString(1));
+            }
+            while (rs.next());
+            rs.close();
+            st.close();
+        } catch (Exception e) {
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -304,6 +318,8 @@ public class CreateUser extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+    
+    
     private void getStaff(){
         try {
             cbSelectStaff.removeAllItems();
@@ -322,6 +338,7 @@ public class CreateUser extends javax.swing.JFrame {
             statement.close();
         } catch (Exception e) {
         }
+
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Form Logo.png")));

@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import static form.CreateMovie.status;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import plugin.Data;
 import plugin.DataConnection;
 import plugin.PanDateAlwaysOnTop;
 
@@ -311,6 +312,20 @@ public class CreateStaff extends javax.swing.JFrame {
             }
         });
 
+        try{String quary    =   "SELECT positionname FROM dbmajorcineplex.tblposition";
+            Statement statement = Data.getDataConnection().createStatement();
+            ResultSet rs =  statement.executeQuery(quary);
+
+            if (rs.first())
+            do {
+                cbSelectPosition.addItem(rs.getString(1));
+
+            } while (rs.next());
+            rs.close();
+            statement.close();
+        } catch (Exception e) {
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -492,7 +507,7 @@ public class CreateStaff extends javax.swing.JFrame {
                                             if (rbMale.isSelected())
                                                 gender = rbMale.getText();
                                             else
-                                                gender = rbFemale.getText();
+                                            gender = rbFemale.getText();
                                             email = txtEmail.getText().trim();
                                             salary = txtSalary.getText().trim();
                                             telephone = txtTelephone.getText().trim();
@@ -721,25 +736,8 @@ public class CreateStaff extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void cbSelectPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSelectPositionActionPerformed
-          //  try { 
-         //    Statement statement = Data.getDataConnection().createStatement();
-        //   
-            
-         //    String query = "SELECT tblposition.PositionName FROM tblposition";
-         //    ResultSet rs = statement.executeQuery(query);
 
-          //   while (rs.next())
-             //{      
-           //     String name = rs.getString("");     
-          //      cbSelectPosition.removeAllItems();
-          //      cbSelectPosition.addItem(rs.getString("Position"));
-             //}//end while
-         //    statement.close();
-         //    } catch (Exception e) {
-         //         e.printStackTrace();
-          //   }
-        
-        
+
     }//GEN-LAST:event_cbSelectPositionActionPerformed
 
     /**

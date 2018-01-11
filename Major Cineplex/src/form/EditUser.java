@@ -135,7 +135,7 @@ public class EditUser extends javax.swing.JFrame {
 
         cbSelectRole.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         cbSelectRole.setForeground(new java.awt.Color(51, 51, 51));
-        cbSelectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "   Role", "   Admin", "   Ticket Seller", "   Snack Seller", "   Stock Holder" }));
+        cbSelectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "   Role" }));
         cbSelectRole.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbSelectRole.setFocusable(false);
         cbSelectRole.setPreferredSize(new java.awt.Dimension(200, 45));

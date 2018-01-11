@@ -354,10 +354,23 @@ public class CreateStaffConfirm extends javax.swing.JDialog {
             String position = positionLabel.getText().trim();
             String profilePhotoPath = CreateStaff.profilePhotoPath;
             
-            if (position.equals("General Manager"))
+            if (position.equals("Cinema Manager"))
                 position = "1";
-            else
+            else if (position.equals("Concession Staff"))
                 position = "2";
+            else if (position.equals("Ticketing Staff"))
+                position = "3";
+            else if (position.equals("Usher"))
+                position = "4";
+            else if (position.equals("Janitor"))
+                position = "5";
+            else if (position.equals("Assistance Admin"))
+                position = "6";
+            else if (position.equals("Marketing"))
+                position = "7";
+            else if (position.equals("Projectionist"))
+                position = "8";
+            else position = "9";
             if (dob.equals("Date of Birth"))
                 dob = "1996-04-18";
             Statement statement = Data.getDataConnection().createStatement();

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="Edit Staff"/>
@@ -270,11 +270,7 @@
           <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="   Position"/>
-            <StringItem index="1" value="   General Manager"/>
-            <StringItem index="2" value="   Staff"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
@@ -285,6 +281,7 @@
         </Property>
       </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="        try {&#xa;            String    query      = &quot;SELECT PositionID FROM dbmajorcineplex.tblstaff WHERE StaffID =&quot;+ListStaff.staffIDSelected+&quot;;&quot;;&#xa;            Statement st    = Data.getDataConnection().createStatement();&#xa;            ResultSet rs    = st.executeQuery(query);&#xa;            if (rs.first())&#xa;        do&#xa;        {&#xa;            cbSelectPosition.addItem(rs.getString(1));&#xa;        }&#xa;            while (rs.next());&#xa;            st.close();&#xa;            rs.close();&#xa;        } catch (Exception e) {&#xa;        }"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>

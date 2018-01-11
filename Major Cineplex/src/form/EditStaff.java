@@ -16,7 +16,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import static form.CreateMovie.status;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import plugin.PanDateAlwaysOnTop;
@@ -204,7 +203,6 @@ public class EditStaff extends javax.swing.JFrame {
 
         cbSelectPosition.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         cbSelectPosition.setForeground(new java.awt.Color(51, 51, 51));
-        cbSelectPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "   Position", "   General Manager", "   Staff" }));
         cbSelectPosition.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbSelectPosition.setFocusable(false);
         cbSelectPosition.setPreferredSize(new java.awt.Dimension(200, 45));
@@ -312,6 +310,21 @@ public class EditStaff extends javax.swing.JFrame {
         cbSelectStatus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbSelectStatus.setFocusable(false);
         cbSelectStatus.setPreferredSize(new java.awt.Dimension(200, 45));
+
+        try {
+            String    query      = "SELECT PositionID FROM dbmajorcineplex.tblstaff WHERE StaffID ="+ListStaff.staffIDSelected+";";
+            Statement st    = Data.getDataConnection().createStatement();
+            ResultSet rs    = st.executeQuery(query);
+            if (rs.first())
+            do
+            {
+                cbSelectPosition.addItem(rs.getString(1));
+            }
+            while (rs.next());
+            st.close();
+            rs.close();
+        } catch (Exception e) {
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -427,6 +440,7 @@ public class EditStaff extends javax.swing.JFrame {
                     txtEmail.setText(resultSet.getString(7));
                     txtSalary.setText(resultSet.getString(8));
                     txtAddress.setText(resultSet.getString(5));
+                    
                 } while (resultSet.next());
             }
             resultSet.close();
@@ -434,10 +448,28 @@ public class EditStaff extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+
     
+    private void getpositionname (){
+        try {
+            String query    =   "SELECT PositionName FROM dbmajorcineplex.tblposition WHERE PositionID ="+ListStaff.staffposid+";";
+            Statement st    =   Data.getDataConnection().createStatement();
+            ResultSet rs    =   st.executeQuery(query);
+            if(rs.first())
+                do {
+                    cbSelectPosition.addItem(rs.getString(1));
+                } while (rs.next());
+            st.close();
+            rs.close();
+        } catch (Exception e) {
+        }
+    }
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Form Logo.png")));
         getStaff();
+        getpositionname();
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void txtNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusGained
