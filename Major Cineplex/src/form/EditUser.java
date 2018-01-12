@@ -207,6 +207,20 @@ public class EditUser extends javax.swing.JFrame {
             }
         });
 
+        try {
+            String query = "SELECT rolename FROM tblrole";
+            Statement st = Data.getDataConnection().createStatement();
+            ResultSet rs = st.executeQuery(query);
+            if (rs.first())
+            do {
+                cbSelectRole.addItem(rs.getString(1));
+            }
+            while (rs.next());
+            rs.close();
+            st.close();
+        } catch (Exception e) {
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

@@ -253,21 +253,7 @@ public class ListStaff extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e);
         }
     }
-        public static String staffposid;
-    private void getpositionid(){
-        try {
-            String    query      = "SELECT PositionID FROM dbmajorcineplex.tblstaff WHERE StaffID ="+ListStaff.staffIDSelected+";";
-            Statement st    = Data.getDataConnection().createStatement();
-            ResultSet rs    = st.executeQuery(query);
-            
-                    int staffpositionid = rs.getInt(11);
-                    staffposid = String.valueOf(staffpositionid);
-                
-            st.close();
-            rs.close();
-        } catch (Exception e) {
-        }
-    }
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Form Logo.png")));
         DefaultTableCellRenderer defaultTableCellRenderer = new DefaultTableCellRenderer();
@@ -276,7 +262,7 @@ public class ListStaff extends javax.swing.JFrame {
             table.getColumnModel().getColumn(i).setCellRenderer(defaultTableCellRenderer);
         //tableColumn();
         tableRow();
-        getpositionid();
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCreateNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNewActionPerformed

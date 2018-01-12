@@ -351,12 +351,7 @@ public class EditStaffConfirm extends javax.swing.JDialog {
             String position = positionLabel.getText().trim();
             String profilePhotoPath = CreateStaff.profilePhotoPath;
             
-            if (position.equals("General Manager"))
-                position = "1";
-            else
-                position = "2";
-            if (dob.equals("Date of Birth"))
-                dob = "1996-04-18";
+            
             Statement statement = Data.getDataConnection().createStatement();
             
             statement.execute("UPDATE dbmajorcineplex.tblstaff SET StaffName = '"+name+"', Gender = '"+gender+"', Birthdate = '"+dob+"', Address = '"+address+"', Telephone = '"+telephone+"', Email = '"+email+"', Salary = "+salary+", Status = '"+status+"', PositionID = "+position+" WHERE StaffID = "+ListStaff.staffIDSelected+";");

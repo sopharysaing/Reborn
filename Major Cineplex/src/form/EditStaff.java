@@ -203,9 +203,15 @@ public class EditStaff extends javax.swing.JFrame {
 
         cbSelectPosition.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         cbSelectPosition.setForeground(new java.awt.Color(51, 51, 51));
+        cbSelectPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "   Position" }));
         cbSelectPosition.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbSelectPosition.setFocusable(false);
         cbSelectPosition.setPreferredSize(new java.awt.Dimension(200, 45));
+        cbSelectPosition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSelectPositionActionPerformed(evt);
+            }
+        });
 
         txtAddress.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         txtAddress.setForeground(new java.awt.Color(153, 153, 153));
@@ -311,18 +317,17 @@ public class EditStaff extends javax.swing.JFrame {
         cbSelectStatus.setFocusable(false);
         cbSelectStatus.setPreferredSize(new java.awt.Dimension(200, 45));
 
-        try {
-            String    query      = "SELECT PositionID FROM dbmajorcineplex.tblstaff WHERE StaffID ="+ListStaff.staffIDSelected+";";
-            Statement st    = Data.getDataConnection().createStatement();
-            ResultSet rs    = st.executeQuery(query);
+        try{String quary    =   "SELECT positionname FROM dbmajorcineplex.tblposition";
+            Statement statement = Data.getDataConnection().createStatement();
+            ResultSet rs =  statement.executeQuery(quary);
+
             if (rs.first())
-            do
-            {
+            do {
                 cbSelectPosition.addItem(rs.getString(1));
-            }
-            while (rs.next());
-            st.close();
+
+            } while (rs.next());
             rs.close();
+            statement.close();
         } catch (Exception e) {
         }
 
@@ -449,26 +454,10 @@ public class EditStaff extends javax.swing.JFrame {
         }
     }
 
-    
-    private void getpositionname (){
-        try {
-            String query    =   "SELECT PositionName FROM dbmajorcineplex.tblposition WHERE PositionID ="+ListStaff.staffposid+";";
-            Statement st    =   Data.getDataConnection().createStatement();
-            ResultSet rs    =   st.executeQuery(query);
-            if(rs.first())
-                do {
-                    cbSelectPosition.addItem(rs.getString(1));
-                } while (rs.next());
-            st.close();
-            rs.close();
-        } catch (Exception e) {
-        }
-    }
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Form Logo.png")));
         getStaff();
-        getpositionname();
+        
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -780,6 +769,10 @@ public class EditStaff extends javax.swing.JFrame {
             this.dispose();
         created = false;
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void cbSelectPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSelectPositionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbSelectPositionActionPerformed
 
     /**
      * @param args the command line arguments

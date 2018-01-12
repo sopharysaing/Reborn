@@ -270,7 +270,9 @@
           <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="1">
+            <StringItem index="0" value="   Position"/>
+          </StringArray>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
@@ -280,8 +282,11 @@
           <Dimension value="[200, 45]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbSelectPositionActionPerformed"/>
+      </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="        try {&#xa;            String    query      = &quot;SELECT PositionID FROM dbmajorcineplex.tblstaff WHERE StaffID =&quot;+ListStaff.staffIDSelected+&quot;;&quot;;&#xa;            Statement st    = Data.getDataConnection().createStatement();&#xa;            ResultSet rs    = st.executeQuery(query);&#xa;            if (rs.first())&#xa;        do&#xa;        {&#xa;            cbSelectPosition.addItem(rs.getString(1));&#xa;        }&#xa;            while (rs.next());&#xa;            st.close();&#xa;            rs.close();&#xa;        } catch (Exception e) {&#xa;        }"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="            try{String quary    =   &quot;SELECT positionname FROM dbmajorcineplex.tblposition&quot;;&#xa;                Statement statement = Data.getDataConnection().createStatement();&#xa;                ResultSet rs =  statement.executeQuery(quary); &#xa;                 &#xa;                if (rs.first())&#xa;                do {&#xa;                    cbSelectPosition.addItem(rs.getString(1));&#xa;                    &#xa;                    } while (rs.next());&#xa;                rs.close();&#xa;                statement.close();&#xa;            } catch (Exception e) {&#xa;            }"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
